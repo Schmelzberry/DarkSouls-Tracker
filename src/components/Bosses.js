@@ -6,6 +6,7 @@ function Bosses() {
   return (
     <React.Fragment>
       <h2>Jake's top 5 Dark Souls Bosses</h2>
+      < hr/>
       <ol>
         <li><a href="https://darksouls.wiki.fextralife.com/Artorias+the+Abysswalker">Artorias The AbyssWalker</a></li>
         <p>Knight Artorias was one of the four Knights of Gwyn, the commanding knights of Lord Gwyn's army. Artorias had an unbendable will of steel, which both helped and fed his hatred for servants of the Dark, particularly the Darkwraiths of Kaathe.</p>
