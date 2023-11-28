@@ -1,21 +1,18 @@
 import React from 'react';
 import Bonfire from "./../img/Bonfire.jpg";
+import './App.css';
+
 function Navbar() {
-  return ( <React.Fragment>
+  return (<React.Fragment>
+
+    <div className="navbar-container">
       <h1>Dark Souls Guide</h1>
-      <h4>|| Bosses || Armor || Weapons || Locations || Classes ||</h4> 
-      <div style={headerImageStyles}>
-        <img id="fire" src={Bonfire} alt="Big Ole Fire" />
-      </div>
-      </React.Fragment>
+      <img id="fire" src={Bonfire} alt="Big Ole Fire" />
+    </div>
+    < hr/>
+  </React.Fragment>
   );
 }
 
 export default Navbar;
 
-{/* <h1>Hardest Dark Souls Bosses</h1>
-      <ul>
-        <li>Knight Artorias</li>
-        <li>Ornstein & Smough</li>
-        <li>Four Kings</li>
-      </ul> */}

@@ -36,3 +36,40 @@
     transform: rotate(360deg);
   }
 }
+
+.navbar-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px; /* Add some padding to provide space around elements */
+}
+
+#fire {
+  width: 75px; /* Set the width of the image */
+  margin-left: auto; /* Automatically push the image to the right */
+}
+
+#knight {
+  width: auto;
+  height: 300px;
+}
+
+h1, h4 {
+  margin: 0; /* Remove default margins */
+}
+
+
+.nav {
+  margin: 0 5px; /* Add spacing between buttons */
+  padding: 5px 10px; /* Add padding to make buttons clickable */
+  cursor: pointer; /* Add a pointer cursor to indicate interactivity */
+  border: none; /* Remove default button border */
+  background-color: #ddd; /* Add a background color */
+  color: #333; /* Set text color */
+}
+
+#boss {
+  width: auto;
+  height: 200px;
+  margin: auto;
+}

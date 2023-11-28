@@ -1,14 +1,14 @@
 
 import React from "react";
 import Navbar from "./Navbar";
-import GeneralInfo from "./GeneralInfo"
+import ViewControl from "./ViewControl";
 
 
 function App() {
   return (
     <React.Fragment>
       <Navbar />
-      <GeneralInfo />
+     <ViewControl />
     </React.Fragment>
   );
 }
