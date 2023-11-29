@@ -2,13 +2,16 @@ import React from 'react';
 import GeneralInfo from './GeneralInfo';
 import Bosses from './Bosses';
 import Armor from './Armor';
+import NewCharacterForm from './NewCharacterForm';
 
 class ViewControl extends React.Component {
   constructor(props){
     super(props)
     this.state = {
       bossesVisibleOnPage: false,
-      armorVisibleOnPage: false
+      armorVisibleOnPage: false,
+      formVisibleOnPage: false,
+      characterList: []
     };
   }
 
@@ -24,28 +27,43 @@ class ViewControl extends React.Component {
       bossesVisibleOnPage: false
     }));
   }
+  handleClickForm = () => {
+    this.setState(prevState => ({
+      formVisibleOnPage: !prevState.formVisibleOnPage,
+    }));
+  }
 
   render(){
     let currentlyVisibleState = null;
     let buttonText = null;
     let buttonText2 = null;
+    let buttonText3 = null;
 
-    if (this.state.bossesVisibleOnPage) {
+    if (this.state.formVisibleOnPage) {
+      currentlyVisibleState = <NewCharacterForm/>
+      buttonText = "Home"
+      buttonText2 = "Armor"
+      buttonText3 = "Create New Character"
+    } 
+    else if (this.state.bossesVisibleOnPage) {
       currentlyVisibleState = <Bosses/>
       buttonText = "Home"
       buttonText2 = "Armor"
+      buttonText3 = "Create New Character"
     } 
     
     else if (this.state.armorVisibleOnPage) { 
       currentlyVisibleState = <Armor/>
       buttonText = "Bosses"
       buttonText2 = "Home"
+      buttonText3 = "Create New Character"
     }
 
      else {
       currentlyVisibleState = <GeneralInfo/>
       buttonText = "Bosses"
       buttonText2 = "Armor"
+      buttonText3 = "Create New Character"
       
     }
     return(
@@ -53,6 +71,7 @@ class ViewControl extends React.Component {
         {currentlyVisibleState}
         <button class="nav" onClick={this.handleClickBosses}>{buttonText}</button>
         <button class="nav" onClick={this.handleClickArmor}>{buttonText2}</button>
+        <button class="nav" onClick={this.handleClickForm}>{buttonText3}</button>
       </React.Fragment>
     );
   }
