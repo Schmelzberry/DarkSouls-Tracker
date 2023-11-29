@@ -9,6 +9,7 @@ function App() {
     <React.Fragment>
       <Navbar />
      <ViewControl />
+     
     </React.Fragment>
   );
 }

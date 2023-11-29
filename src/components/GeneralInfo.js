@@ -1,8 +1,10 @@
 import React from 'react';
 import SoulsImage from "./../img/Souls.avif";
 import './App.css';
+import CharacterList from './CharacterList';
+import PropTypes from 'prop-types';
 
-function GeneralInfo(){
+function GeneralInfo(props){
   return(
     <React.Fragment>
       
@@ -22,9 +24,15 @@ function GeneralInfo(){
       <hr />
       <img id="knight" src={SoulsImage} alt="An image of a knight" />
       <p><em>* One of many ways that a character can look like in the DS series</em></p>
+      <CharacterList characterList={props.characterList}  onCharacterSelection={props.onCharacterSelection} />
     </React.Fragment>
   );
  
 }
+
+GeneralInfo.propTypes = {
+  characterList: PropTypes.array,
+  onCharacterSelection: PropTypes.func
+};
 
 export default GeneralInfo;
