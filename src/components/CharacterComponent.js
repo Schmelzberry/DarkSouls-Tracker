@@ -1,6 +1,6 @@
 import React from "react";
 
-function Character(){
+function CharacterComponent(){
   const name = "Smelsberry";
   const weaponType = "Dragon Tooth";
   const fightingStyle = "Magic from range fer dayz";
@@ -16,4 +16,4 @@ function Character(){
   );
 }
 
-export default Character;
+export default CharacterComponent;

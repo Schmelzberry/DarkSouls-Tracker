@@ -11,7 +11,7 @@ class ViewControl extends React.Component {
       bossesVisibleOnPage: false,
       armorVisibleOnPage: false,
       formVisibleOnPage: false,
-      characterList: []
+      mainCharacterList: []
     };
   }
 
@@ -33,6 +33,12 @@ class ViewControl extends React.Component {
     }));
   }
 
+  handleAddingNewCharacterToList = (newCharacter) => {
+    const newMainCharacterList = this.state.mainCharacterList.concat(newCharacter);
+    this.setState({mainCharacterList: newMainCharacterList,
+    formVisibleOnPage: false });
+  }
+
   render(){
     let currentlyVisibleState = null;
     let buttonText = null;
@@ -40,10 +46,10 @@ class ViewControl extends React.Component {
     let buttonText3 = null;
 
     if (this.state.formVisibleOnPage) {
-      currentlyVisibleState = <NewCharacterForm/>
-      buttonText = "Home"
+      currentlyVisibleState = <NewCharacterForm onNewCharacterCreation={this.handleAddingNewCharacterToList}/>
+      buttonText = "Bosses"
       buttonText2 = "Armor"
-      buttonText3 = "Create New Character"
+      buttonText3 = "Home"
     } 
     else if (this.state.bossesVisibleOnPage) {
       currentlyVisibleState = <Bosses/>
@@ -60,7 +66,7 @@ class ViewControl extends React.Component {
     }
 
      else {
-      currentlyVisibleState = <GeneralInfo/>
+      currentlyVisibleState = <GeneralInfo characterList={this.state.mainCharacterList}/>
       buttonText = "Bosses"
       buttonText2 = "Armor"
       buttonText3 = "Create New Character"
