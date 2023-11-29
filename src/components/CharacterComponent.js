@@ -1,19 +1,30 @@
 import React from "react";
+import PropTypes from "prop-types";
 
-function CharacterComponent(){
-  const name = "Smelsberry";
-  const weaponType = "Dragon Tooth";
-  const fightingStyle = "Magic from range fer dayz";
+function CharacterComponent(props) {
   return (
     <React.Fragment>
-      <h3>{name}</h3>
-      <ul>
-        <li>{weaponType}</li>
-        <li>{fightingStyle}</li>
-      </ul>
-      <hr/>
+      <div onClick={() => {
+        console.log("whenCharacterClicked called");
+        props.whenCharacterClicked(props.id)
+      }}>
+        <h3>{props.name}</h3>
+        <ul>
+          <li>{props.weaponType}</li>
+          <li>{props.fightingStyle}</li>
+        </ul>
+        <hr />
+      </div>
     </React.Fragment>
   );
 }
+
+CharacterComponent.propTypes = {
+  name: PropTypes.string,
+  weaponType: PropTypes.string,
+  fightingStyle: PropTypes.string,
+  id: PropTypes.string, 
+  whenCharacterClicked: PropTypes.func 
+};
 
 export default CharacterComponent;
