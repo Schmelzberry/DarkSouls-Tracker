@@ -1,8 +1,8 @@
-# _Tea Shop_
+# _Dark Souls Adventure Tracker_
 
 #### By _**Jake Elsberry**_
 
-#### _A react app for managing inventory of a loose leaf tea shop._
+#### _A react app for tracking various Dark Souls saves and adventures._
 
 ## Technologies Used
 
@@ -27,7 +27,7 @@ _This react application is for providing some context on the game Dark Souls 1 a
 
 ## Component Diagram
 
-![NeedToDo](src/img/.jpg "Component Diagram")
+![NeedToDo](src/img/DSComponents.png "Component Diagram")
 
 ## Known Bugs
 

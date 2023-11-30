@@ -4,6 +4,7 @@ import Bosses from './Bosses';
 import Armor from './Armor';
 import NewCharacterForm from './NewCharacterForm';
 import CharacterDetail from './CharacterDetail';
+import EditCharacterForm from './EditCharacterForm';
 
 class ViewControl extends React.Component {
   constructor(props) {
@@ -13,7 +14,8 @@ class ViewControl extends React.Component {
       armorVisibleOnPage: false,
       formVisibleOnPage: false,
       mainCharacterList: [],
-      selectedCharacter: null
+      selectedCharacter: null,
+      editing: false
     };
   }
 
@@ -54,8 +56,8 @@ class ViewControl extends React.Component {
 
   handleChangingSelectedCharacter = (id) => {
     const selectedCharacter = this.state.mainCharacterList.
-    filter(character => character.id === id)[0];
-      this.setState({ selectedCharacter: selectedCharacter });
+      filter(character => character.id === id)[0];
+    this.setState({ selectedCharacter: selectedCharacter });
   }
 
   handleDeletingCharacter = (id) => {
@@ -66,14 +68,61 @@ class ViewControl extends React.Component {
     });
   }
 
+  handleEditClick = () => {
+    console.log("handleEditClick reached!");
+    this.setState({ editing: true });
+  }
+
+  handleEditingCharacterInList = (characterToEdit) => {
+    const editedMainCharacterList = this.state.mainCharacterList
+      .filter(character => character.id !== this.state.selectedCharacter.id)
+      .concat(characterToEdit);
+    this.setState({
+        mainCharacterList: editedMainCharacterList,
+        editing: false,
+        selectedCharacter: null
+      });
+  }
+
+  handleClick = () => {
+    if (this.state.selectedCharacter != null) {
+      this.setState({
+        formVisibleOnPage: false,
+        selectedCharacter: null,
+        editing: false 
+      });
+    } else {
+      this.setState(prevState => ({
+        formVisibleOnPage: !prevState.formVisibleOnPage,
+      }));
+    }
+  }
+
   render() {
     let currentlyVisibleState = null;
     let buttonText = null;
     let buttonText2 = null;
     let buttonText3 = null;
 
-    if (this.state.selectedCharacter != null) {
-      currentlyVisibleState = <CharacterDetail character={this.state.selectedCharacter} onClickingDelete = {this.handleDeletingCharacter} />
+    if (this.state.editing) {
+      currentlyVisibleState = (
+        <EditCharacterForm
+          character={this.state.selectedCharacter}
+          onClickingDelete={this.handleDeletingCharacter}
+          onClickingEdit={this.handleEditClick}
+          onEditCharacter = {this.handleEditingCharacterInList}
+          buttonText="Bosses"
+          buttonText2="Armor"
+          buttonText3="Home"
+        />
+      );
+    }
+    else if (this.state.selectedCharacter != null) {
+      currentlyVisibleState =
+        <CharacterDetail
+          character={this.state.selectedCharacter}
+          onClickingDelete={this.handleDeletingCharacter}
+          onClickingEdit={this.handleEditClick} />
       buttonText = "Bosses"
       buttonText2 = "Armor"
       buttonText3 = "Home"
@@ -99,7 +148,7 @@ class ViewControl extends React.Component {
     }
 
     else {
-      currentlyVisibleState = <GeneralInfo characterList={this.state.mainCharacterList}  onCharacterSelection={this.handleChangingSelectedCharacter} />
+      currentlyVisibleState = <GeneralInfo characterList={this.state.mainCharacterList} onCharacterSelection={this.handleChangingSelectedCharacter} />
       buttonText = "Bosses"
       buttonText2 = "Armor"
       buttonText3 = "Create New Character"

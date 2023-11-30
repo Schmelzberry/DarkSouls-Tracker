@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { v4 } from 'uuid'; 
+import ReusableForm from './ReusableForm';
 
 function NewCharacterForm(props) {
 
@@ -23,24 +24,9 @@ function NewCharacterForm(props) {
       <p>Planning an adventure to the land of Lordran soon? Track your adventure below!</p>
       <hr />
       <h3>Character Form</h3>
-      <form onSubmit={handleNewCharacterFormSubmission}>
-        <input
-          type='text'
-          name='name'
-          placeholder='name of character' />
-          <br/>
-        <input
-          type='text'
-          name='weaponType'
-          placeholder='sword/magic staff/axe/etc.' />
-          <br/>
-        <textarea
-          name='fightingStyle'
-          placeholder='How do you want to be slaying monsters?' />
-          <br/>
-        <button type='submit'>Don't Go Hollow!</button>
-      </form>
-      
+      <ReusableForm
+      formSubmissionHandler={handleNewCharacterFormSubmission}
+      btnText="Don't go hollow!"/>
     </React.Fragment>
   )
 }
