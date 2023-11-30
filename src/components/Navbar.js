@@ -6,7 +6,7 @@ function Navbar() {
   return (<React.Fragment>
 
     <div className="navbar-container">
-      <h1>Dark Souls Guide</h1>
+      <h1>Dark Souls Tracker</h1>
       <img id="fire" src={Bonfire} alt="Big Ole Fire" />
     </div>
     < hr/>

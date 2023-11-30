@@ -8,6 +8,7 @@ function Armor() {
       <hr />
       <p>Catarina Armor</p>
       <img id="boss" src="https://darksouls.wiki.fextralife.com/file/Dark-Souls/Catarina_Set_equipx.jpg" alt="Cat Set"></img>
+      <hr/>
       <p>In Dark Souls, the armor system is a crucial aspect of the game, influencing the player character's defenses and appearance. Here are the key points regarding the armor system in Dark Souls 1:</p>
       <ol>
         <li>Armor Types: There are several types of armor, including helmets, chest pieces, gauntlets, and leggings. Players can mix and match these pieces to create their preferred combination of protection and aesthetics.</li>
