@@ -30,7 +30,7 @@ _This react application is for providing some context on the game Dark Souls 1 a
 ![NeedToDo](src/img/DSComponents.png "Component Diagram")
 
 ## Known Bugs
-
+* Navigation buttons below Edit Character Form, but Edit character component works using "update character" button that lives in form
 
 ## License
 

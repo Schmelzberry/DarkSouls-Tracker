@@ -11,6 +11,7 @@ function NewCharacterForm(props) {
       name: event.target.name.value,
       weaponType: event.target.weaponType.value,
       fightingStyle: event.target.fightingStyle.value,
+      startingClass: event.target.startingClass.value,
       id: v4()
     });
     
@@ -23,7 +24,7 @@ function NewCharacterForm(props) {
       <h2>Character Builder</h2>
       <p>Planning an adventure to the land of Lordran soon? Track your adventure below!</p>
       <hr />
-      <h3>Character Form</h3>
+      <h3>New Character</h3>
       <ReusableForm
       formSubmissionHandler={handleNewCharacterFormSubmission}
       btnText="Don't go hollow!"/>

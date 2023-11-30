@@ -13,16 +13,29 @@ function ReusableForm(props) {
           placeholder="Name"
       
         /><br />
+        <label>
+          Weapon Category:
         <input
           type="text"
           name="weaponType"
           placeholder="How will you arm yourself?"
       
-        /><br />
-        <textarea
-          name="fightingStyle"
-          placeholder="Describe how you plan on fighting back!"
-        /><br />
+        /></label><br />
+        <label>
+          Starting Class:
+          <select name="startingClass">
+            <option value="warrior">Warrior</option>
+            <option value="knight">Knight</option>
+            <option value="wanderer">Wanderer</option>
+            <option value="thief">Thief</option>
+            <option value="bandit">Bandit</option>
+            <option value="hunter">Hunter</option>
+            <option value="sorcerer">Sorcerer</option>
+            <option value="pyromancer">Pyromancer</option>
+            <option value="cleric">Cleric</option>
+            <option value="deprived">Deprived</option>
+          </select>
+        </label><br />
         <button type="submit">{btnText}</button>
         <hr />
       </form>
@@ -36,3 +49,4 @@ ReusableForm.propTypes = {
 };
 
 export default ReusableForm;
+

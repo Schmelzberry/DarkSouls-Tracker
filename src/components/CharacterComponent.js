@@ -12,6 +12,7 @@ function CharacterComponent(props) {
         <ul>
           <li>{props.weaponType}</li>
           <li>{props.fightingStyle}</li>
+          <li>{props.startingClass}</li>
         </ul>
         <hr />
       </div>
@@ -23,6 +24,7 @@ CharacterComponent.propTypes = {
   name: PropTypes.string,
   weaponType: PropTypes.string,
   fightingStyle: PropTypes.string,
+  startingClass: PropTypes.string,
   id: PropTypes.string, 
   whenCharacterClicked: PropTypes.func 
 };

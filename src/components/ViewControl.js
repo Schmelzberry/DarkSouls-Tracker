@@ -42,7 +42,7 @@ class ViewControl extends React.Component {
       selectedCharacter: null,
     }));
   }
-
+  
   handleAddingNewCharacterToList = (newCharacter) => {
     const newMainCharacterList = this.state.mainCharacterList.concat(newCharacter);
     this.setState({
@@ -69,7 +69,6 @@ class ViewControl extends React.Component {
   }
 
   handleEditClick = () => {
-    console.log("handleEditClick reached!");
     this.setState({ editing: true });
   }
 
@@ -100,68 +99,140 @@ class ViewControl extends React.Component {
 
   render() {
     let currentlyVisibleState = null;
-    let buttonText = null;
-    let buttonText2 = null;
-    let buttonText3 = null;
-
+    let buttonText = "Bosses";
+    let buttonText2 = "Armor";
+    let buttonText3 = "Create New Character";
+  
     if (this.state.editing) {
       currentlyVisibleState = (
         <EditCharacterForm
           character={this.state.selectedCharacter}
           onClickingDelete={this.handleDeletingCharacter}
           onClickingEdit={this.handleEditClick}
-          onEditCharacter = {this.handleEditingCharacterInList}
-          buttonText="Bosses"
-          buttonText2="Armor"
-          buttonText3="Home"
+          onEditCharacter={this.handleEditingCharacterInList}
         />
       );
-    }
-    else if (this.state.selectedCharacter != null) {
-      currentlyVisibleState =
+    } else if (this.state.selectedCharacter != null) {
+      currentlyVisibleState = (
         <CharacterDetail
           character={this.state.selectedCharacter}
           onClickingDelete={this.handleDeletingCharacter}
-          onClickingEdit={this.handleEditClick} />
-      buttonText = "Bosses"
-      buttonText2 = "Armor"
-      buttonText3 = "Home"
+          onClickingEdit={this.handleEditClick}
+        />
+      );
+    } else if (this.state.formVisibleOnPage) {
+      buttonText = "Bosses";
+      buttonText2 = "Armor";
+      buttonText3 = "Home";
+      currentlyVisibleState = (
+        <NewCharacterForm
+          onNewCharacterCreation={this.handleAddingNewCharacterToList}
+          buttonText3 = "Home"
+        />
+      );
+    } else if (this.state.bossesVisibleOnPage) {
+      buttonText = "Home";
+      buttonText2 = "Armor";
+      buttonText3 = "Create New Character";
+      currentlyVisibleState = <Bosses />;
+    } else if (this.state.armorVisibleOnPage) {
+      buttonText = "Bosses";
+      buttonText2 = "Home";
+      buttonText3 = "Create New Character";
+      currentlyVisibleState = <Armor />;
+    } else {
+      currentlyVisibleState = (
+        <GeneralInfo
+          characterList={this.state.mainCharacterList}
+          onCharacterSelection={this.handleChangingSelectedCharacter}
+        />
+      );
     }
-    else if (this.state.formVisibleOnPage) {
-      currentlyVisibleState = <NewCharacterForm onNewCharacterCreation={this.handleAddingNewCharacterToList} />
-      buttonText = "Bosses"
-      buttonText2 = "Armor"
-      buttonText3 = "Home"
-    }
-    else if (this.state.bossesVisibleOnPage) {
-      currentlyVisibleState = <Bosses />
-      buttonText = "Home"
-      buttonText2 = "Armor"
-      buttonText3 = "Create New Character"
-    }
-
-    else if (this.state.armorVisibleOnPage) {
-      currentlyVisibleState = <Armor />
-      buttonText = "Bosses"
-      buttonText2 = "Home"
-      buttonText3 = "Create New Character"
-    }
-
-    else {
-      currentlyVisibleState = <GeneralInfo characterList={this.state.mainCharacterList} onCharacterSelection={this.handleChangingSelectedCharacter} />
-      buttonText = "Bosses"
-      buttonText2 = "Armor"
-      buttonText3 = "Create New Character"
-
-    }
+  
     return (
       <React.Fragment>
         {currentlyVisibleState}
-        <button className="nav" onClick={this.handleClickBosses}>{buttonText}</button>
-        <button className="nav" onClick={this.handleClickArmor}>{buttonText2}</button>
-        <button className="nav" onClick={this.handleClickForm}>{buttonText3}</button>
+        <button className="nav" onClick={this.handleClickBosses}>
+          {buttonText}
+        </button>
+        <button className="nav" onClick={this.handleClickArmor}>
+          {buttonText2}
+        </button>
+        <button className="nav" onClick={this.handleClickForm}>
+          {buttonText3}
+        </button>
       </React.Fragment>
     );
   }
 }
+
 export default ViewControl;
+
+
+  // render() {
+  //   let currentlyVisibleState = null;
+  //   let buttonText = null;
+  //   let buttonText2 = null;
+  //   let buttonText3 = null;
+
+  //   if (this.state.editing) {
+  //     currentlyVisibleState = (
+  //       <EditCharacterForm
+  //         character={this.state.selectedCharacter}
+  //         onClickingDelete={this.handleDeletingCharacter}
+  //         onClickingEdit={this.handleEditClick}
+  //         onEditCharacter = {this.handleEditingCharacterInList}
+  //       />
+  //     );
+  //     buttonText="Bosses"
+  //     buttonText2="Armor"
+  //     buttonText3="Home"
+  //   }
+  //   else if (this.state.selectedCharacter != null) {
+  //     currentlyVisibleState =
+  //       <CharacterDetail
+  //         character={this.state.selectedCharacter}
+  //         onClickingDelete={this.handleDeletingCharacter}
+  //         onClickingEdit={this.handleEditClick} />
+  //     buttonText = "Bosses"
+  //     buttonText2 = "Armor"
+  //     buttonText3 = "Home"
+  //   }
+  //   else if (this.state.formVisibleOnPage) {
+  //     currentlyVisibleState = <NewCharacterForm onNewCharacterCreation={this.handleAddingNewCharacterToList} />
+  //     buttonText = "Bosses"
+  //     buttonText2 = "Armor"
+  //     buttonText3 = "Home"
+  //   }
+  //   else if (this.state.bossesVisibleOnPage) {
+  //     currentlyVisibleState = <Bosses />
+  //     buttonText = "Home"
+  //     buttonText2 = "Armor"
+  //     buttonText3 = "Create New Character"
+  //   }
+
+  //   else if (this.state.armorVisibleOnPage) {
+  //     currentlyVisibleState = <Armor />
+  //     buttonText = "Bosses"
+  //     buttonText2 = "Home"
+  //     buttonText3 = "Create New Character"
+  //   }
+
+  //   else {
+  //     currentlyVisibleState = <GeneralInfo characterList={this.state.mainCharacterList} onCharacterSelection={this.handleChangingSelectedCharacter} />
+  //     buttonText = "Bosses"
+  //     buttonText2 = "Armor"
+  //     buttonText3 = "Create New Character"
+
+  //   }
+  //   return (
+  //     <React.Fragment>
+  //       {currentlyVisibleState}
+  //       <button className="nav" onClick={this.handleClickBosses}>{buttonText}</button>
+  //       <button className="nav" onClick={this.handleClickArmor}>{buttonText2}</button>
+  //       <button className="nav" onClick={this.handleClickForm}>{buttonText3}</button>
+  //     </React.Fragment>
+  //   );
+  // }
+
+
